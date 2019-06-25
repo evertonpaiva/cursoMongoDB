@@ -1,0 +1,60 @@
+#Listar todos de uma coleção
+db.alunos.find().pretty()
+
+#Buscando aluno de nome Felipe
+db.alunos.find({
+    "nome" : "Felipe"
+}).pretty()
+
+#Buscando aluno de nome Felipe e com a data de nascimento de 26/02/1994
+db.alunos.find({
+    "nome" : "Felipe",
+    "data_nascimento": new Date(1994, 02, 26)
+}).pretty()
+
+#Buscando alunos por habilidade inglês
+db.alunos.find({
+    "habilidades.nome": "inglês"
+}).pretty()
+
+#Buscando alunos por habilidade inglês e nome felipe
+db.alunos.find({
+    "nome": "Felipe",
+    "habilidades.nome": "inglês"
+}).pretty()
+
+#Buscando alunos de Sistemas de Informação ou Química
+db.alunos.find({
+    $or : [
+        {"curso.nome": "Sistemas de informação"},
+        {"curso.nome": "Engenharia Química"}
+    ]
+}).pretty()
+
+#Buscando alunos de Sistemas de Informação ou Química e o nome Daniela
+db.alunos.find({
+    $or : [
+        {"curso.nome": "Sistemas de informação"},
+        {"curso.nome": "Engenharia Química"}
+    ],
+    "nome": "Daniela"
+}).pretty()
+
+#Buscando alunos de Sistemas de Informação, Química ou Moda e o nome Daniela
+db.alunos.find({
+    $or : [
+        {"curso.nome": "Sistemas de informação"},
+        {"curso.nome": "Engenharia Química"},
+        {"curso.nome": "Moda"}
+    ],
+    "nome": "Daniela"
+}).pretty()
+
+#Buscando alunos de Sistemas de Informação ou Química (operador $in)
+db.alunos.find({
+        "curso.nome" : {
+            $in : [
+                    "Sistemas de informação",
+                    "Engenharia Química"
+            ]}
+}).pretty()
