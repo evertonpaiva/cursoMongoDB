@@ -61,3 +61,23 @@ db.alunos.update(
         multi: true
     }
 )
+
+#Atualizar um determinado aluno adicionando uma nota
+db.alunos.update(
+    {"_id" : ObjectId("5d1256d4381425f0b5170b32")},
+    {
+        $push : {
+                "notas" : 8.5
+        }
+    }
+)
+
+#Atualizar um determinado aluno adicionando mais de uma nota
+db.alunos.update(
+    {"_id" : ObjectId("5d1256d4381425f0b5170b32")},
+    {
+        $push : {
+                "notas" : { $each : [8.5, 3]}
+        }
+    }
+)
