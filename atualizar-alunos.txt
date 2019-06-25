@@ -1,0 +1,63 @@
+db.alunos.insert({
+    nome: "Fernando",
+    data_nascimento: new Date(1994, 03, 26),
+    notas : [10, 4.5, 7],
+    curso: {
+        nome : "Sistema de informação"
+    }
+})
+
+db.alunos.find({
+    "nome" : "Fernando"
+}).pretty()
+
+db.alunos.find({
+    "curso.nome" : "Sistemas de informação"
+}).pretty()
+
+
+#UPDATE errado
+db.alunos.update(
+    {"curso.nome" : "Sistema de informação"},
+    {"curso.nome" : "Sistemas de informação"}
+)
+
+db.alunos.remove({
+"_id" : ObjectId("5d1263ff0560c93cf3a4e33f")
+})
+
+db.alunos.remove({
+"_id" : ObjectId("5d12651b0560c93cf3a4e340")
+})
+
+#Corrigindo nome do curso
+db.alunos.update(
+    {"curso.nome" : "Sistema de informação"},
+    {
+        $set : {
+            "curso.nome" : "Sistemas de informação"
+        }
+    }
+)
+
+#Corrigindo nome do curso (porém ele só altera a primeira ocorrência)
+db.alunos.update(
+    {"curso.nome" : "Sistemas de informação"},
+    {
+        $set : {
+            "curso.nome" : "Sistemas de Informação"
+        }
+    }
+)
+
+#Corrigindo nome do curso (para todas as ocorrências)
+db.alunos.update(
+    {"curso.nome" : "Sistemas de informação"},
+    {
+        $set : {
+            "curso.nome" : "Sistemas de Informação"
+        }
+    }, {
+        multi: true
+    }
+)
