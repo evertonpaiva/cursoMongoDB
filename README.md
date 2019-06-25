@@ -37,3 +37,8 @@ Selecionar o banco
 ```
 use test
 ```
+
+Importar os dados de alunos para o banco
+```
+mongoimport -c alunos --jsonArray < alunos.json
+```
