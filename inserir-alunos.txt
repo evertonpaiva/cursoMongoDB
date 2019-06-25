@@ -1,0 +1,69 @@
+db.alunos.insert({
+    "nome": "Felipe",
+    "data_nascimento": new Date(1994, 02, 26),
+    "curso": {
+        "nome": "Sistemas de informação"
+    },
+    "notas": [10.0, 9.0, 4.5],
+    "habilidades": [{
+        "nome": "inglês",
+        "nível": "avançado"
+    }, {
+        "nome": "taekwondo",
+        "nível": "básico"
+    }]
+})
+
+db.alunos.insert(
+{"nome" : "Julio",
+"data_nascimento" : new Date(1972, 08, 30),
+"curso" : {
+    "nome" : "Medicina"
+},
+"habilidades" : [
+        {
+        "nome" : "inglês",
+        "nível" : "avançado"
+        }
+    ]
+}
+)
+
+db.alunos.insert(
+{
+    nome : "Paulo",
+    data_nascimento : new Date(1979,12,31),
+    curso : {
+        nome : "Ciência da Computação"
+    },
+    habilidades : [
+    {
+        nome: "inglês",
+        nível: "avançado"
+    },
+    {
+            nome: "francês",
+            nível: "avançado"
+    }
+    ]
+}
+)
+
+db.alunos.insert(
+{
+    nome : "Daniela",
+    data_nascimento : new Date(1995,07,17),
+    notas: [10, 9, 7],
+    curso : {
+        nome : "Moda"
+    },
+    habilidades : [
+    {
+        nome: "alemão",
+        nível: "básico"
+    }
+    ]
+}
+)
+
+db.alunos.remove({     "_id" : ObjectId ("5d125158381425f0b5170b2e") })

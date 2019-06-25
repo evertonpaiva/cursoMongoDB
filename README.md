@@ -32,3 +32,8 @@ Conectar na instância local do MongoDB
 ```
 mongo --host 127.0.0.1:27017
 ```
+
+Selecionar o banco
+```
+use test
+```
